@@ -27,7 +27,7 @@ using namespace std;
 class smallobj                                      // Define Class
 {
 private:
-    int somedata;                                   // Class data (belongs to class)
+    int somedata;                                   // Class data members (belongs to class)
 public:
     void setdata(int d)                             // Member function to set data
     {
