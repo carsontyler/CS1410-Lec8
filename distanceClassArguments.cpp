@@ -36,6 +36,7 @@ public:
 
     // Prototypes
     void add_dist(Distance d1, Distance d2);
+    Distance add_dist_to_me(Distance d1);
 };
 
 // Prototypes
@@ -57,6 +58,10 @@ int main()
     cout << "In d4 ";
     d4.showDist();
 
+    d4 = d4.add_dist_to_me(d2);
+    cout << "In d4 now ";
+    d4.showDist();
+
     return 0;
 }
 // Function Definitions
@@ -76,4 +81,19 @@ void Distance::add_dist(Distance d2, Distance d3)
         feet++;                                          // Check for extra feet
     }
     feet += d2.feet + d3.feet;                           // Add feet
+}
+
+Distance Distance::add_dist_to_me(Distance d1)
+{
+    Distance temp;                                       // Initialize to zero
+    temp.inch = inch + d1.inch;
+    if(temp.inch >= 12)
+    {
+        temp.inch -= 12;
+        temp.feet++;
+    }
+    temp.feet += feet + d1.feet;
+
+    return temp;
+
 }
