@@ -10,11 +10,14 @@ class Distance
 private:
     int feet;
     float inch;
+    static int count;                                           // Static only created the first time it's encountered
+                                                                // d2 can't touch it if d1 touches it. It's shared by EVERY members
+                                                                // Add to a constructor. ONE PER CLASS
 public:
     // Constructor
-    Distance(): feet(0), inch(0){}                        // Constructor with no arguments, Takes no parameters/arguments
-    Distance(int ft, float in): feet(ft), inch(in){}      // Two parameters, with two arguments
-                                                          // SET TWO, one with parameters, one without
+    Distance(): feet(0), inch(0){count++;}                       // Constructor with no arguments, Takes no parameters/arguments
+    Distance(int ft, float in): feet(ft), inch(in){count++;}     // Two parameters, with two arguments
+                                                                // SET TWO, one with parameters, one without
 
     void setDist(int f, float i)
     {
@@ -37,23 +40,31 @@ public:
     // Prototypes
     void add_dist(Distance d1, Distance d2);
     Distance add_dist_to_me(Distance d1);
+    int getCount()
+    {
+        return count;
+    }
 };
-
+int Distance::count = 0;
 // Prototypes
 
 // Main Program
 int main()
 {
     Distance d1, d4;
+    cout << "Count is " << d1.getCount() << endl;
     Distance d2(8, 2.0);                                // Must have two parameters
+    cout << "Count is " << d2.getCount() << endl;
     Distance d3(2, 4.0);
 
     cout << "In d1, ";
     d1.showDist();
+    cout << "Count is " << d3.getCount() << endl;
     cout << "In d2 ";
     d2.showDist();
     cout << "In d3 ";
     d3.showDist();
+    cout << "Count is " << d4.getCount() << endl;
     d4.add_dist(d2, d3);
     cout << "In d4 ";
     d4.showDist();
