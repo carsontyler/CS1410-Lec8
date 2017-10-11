@@ -1,7 +1,7 @@
 // File: distanceClass
 // Created by Carson Tyler on 9/21/2017 for CS1410.
 // Copyright ©2017 WSU
-#include <iostream>
+#include <iostream> //Changee
 using namespace std;
 
 // Constants
@@ -40,6 +40,7 @@ public:
     // Prototypes
     void add_dist(Distance d1, Distance d2);
     Distance add_dist_to_me(Distance d1);
+
     int getCount()
     {
         return count;
